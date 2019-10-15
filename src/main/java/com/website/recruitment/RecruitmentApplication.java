@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, MybatisAutoConfiguration.class})
-@SpringBootApplication(scanBasePackages = "com.website.recruitment")
+@SpringBootApplication
 public class RecruitmentApplication {
 
     public static void main(String[] args) {
