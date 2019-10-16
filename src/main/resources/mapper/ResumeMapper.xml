@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.website.recruitment.dao.ResumeMapper">
+  <resultMap id="BaseResultMap" type="com.website.recruitment.bean.Resume">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="resume_title" jdbcType="VARCHAR" property="resumeTitle" />
+    <result column="resume_type" jdbcType="INTEGER" property="resumeType" />
+    <result column="is_default" jdbcType="INTEGER" property="isDefault" />
+    <result column="is_private" jdbcType="INTEGER" property="isPrivate" />
+    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="order" jdbcType="INTEGER" property="order" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="INTEGER" property="createUser" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="modify_user" jdbcType="INTEGER" property="modifyUser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, resume_title, resume_type, is_default, is_private, delete_status, order, create_time, 
+    create_user, modify_time, modify_user
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_resume
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_resume
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.website.recruitment.bean.Resume">
+    insert into t_resume (id, resume_title, resume_type, 
+      is_default, is_private, delete_status, 
+      order, create_time, create_user, 
+      modify_time, modify_user)
+    values (#{id,jdbcType=INTEGER}, #{resumeTitle,jdbcType=VARCHAR}, #{resumeType,jdbcType=INTEGER}, 
+      #{isDefault,jdbcType=INTEGER}, #{isPrivate,jdbcType=INTEGER}, #{deleteStatus,jdbcType=INTEGER}, 
+      #{order,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=INTEGER}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{modifyUser,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.website.recruitment.bean.Resume">
+    insert into t_resume
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="resumeTitle != null">
+        resume_title,
+      </if>
+      <if test="resumeType != null">
+        resume_type,
+      </if>
+      <if test="isDefault != null">
+        is_default,
+      </if>
+      <if test="isPrivate != null">
+        is_private,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+      <if test="order != null">
+        order,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="modifyUser != null">
+        modify_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="resumeTitle != null">
+        #{resumeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeType != null">
+        #{resumeType,jdbcType=INTEGER},
+      </if>
+      <if test="isDefault != null">
+        #{isDefault,jdbcType=INTEGER},
+      </if>
+      <if test="isPrivate != null">
+        #{isPrivate,jdbcType=INTEGER},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="order != null">
+        #{order,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUser != null">
+        #{modifyUser,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.website.recruitment.bean.Resume">
+    update t_resume
+    <set>
+      <if test="resumeTitle != null">
+        resume_title = #{resumeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeType != null">
+        resume_type = #{resumeType,jdbcType=INTEGER},
+      </if>
+      <if test="isDefault != null">
+        is_default = #{isDefault,jdbcType=INTEGER},
+      </if>
+      <if test="isPrivate != null">
+        is_private = #{isPrivate,jdbcType=INTEGER},
+      </if>
+      <if test="deleteStatus != null">
+        delete_status = #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="order != null">
+        order = #{order,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUser != null">
+        modify_user = #{modifyUser,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.website.recruitment.bean.Resume">
+    update t_resume
+    set resume_title = #{resumeTitle,jdbcType=VARCHAR},
+      resume_type = #{resumeType,jdbcType=INTEGER},
+      is_default = #{isDefault,jdbcType=INTEGER},
+      is_private = #{isPrivate,jdbcType=INTEGER},
+      delete_status = #{deleteStatus,jdbcType=INTEGER},
+      order = #{order,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      modify_user = #{modifyUser,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

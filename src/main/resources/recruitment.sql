@@ -18,6 +18,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for  t_resume_education
 -- ----------------------------
+
 DROP TABLE IF EXISTS ` t_resume_education`;
 CREATE TABLE ` t_resume_education` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',

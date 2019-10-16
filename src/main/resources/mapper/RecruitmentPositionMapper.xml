@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.website.recruitment.dao.RecruitmentPositionMapper">
+  <resultMap id="BaseResultMap" type="com.website.recruitment.bean.RecruitmentPosition">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="manager_id" jdbcType="INTEGER" property="managerId" />
+    <result column="position_title" jdbcType="VARCHAR" property="positionTitle" />
+    <result column="age_range" jdbcType="VARCHAR" property="ageRange" />
+    <result column="education" jdbcType="INTEGER" property="education" />
+    <result column="recruit_num" jdbcType="INTEGER" property="recruitNum" />
+    <result column="sex_enable" jdbcType="INTEGER" property="sexEnable" />
+    <result column="recruit_num_female" jdbcType="INTEGER" property="recruitNumFemale" />
+    <result column="recruit_num_male" jdbcType="INTEGER" property="recruitNumMale" />
+    <result column="work_address" jdbcType="VARCHAR" property="workAddress" />
+    <result column="salary_start" jdbcType="INTEGER" property="salaryStart" />
+    <result column="salary_end" jdbcType="INTEGER" property="salaryEnd" />
+    <result column="schedule_code" jdbcType="INTEGER" property="scheduleCode" />
+    <result column="schedule_info" jdbcType="VARCHAR" property="scheduleInfo" />
+    <result column="work_welfare" jdbcType="INTEGER" property="workWelfare" />
+    <result column="other_welfare" jdbcType="VARCHAR" property="otherWelfare" />
+    <result column="post_duty" jdbcType="VARCHAR" property="postDuty" />
+    <result column="job_requirement" jdbcType="VARCHAR" property="jobRequirement" />
+    <result column="work_time" jdbcType="VARCHAR" property="workTime" />
+    <result column="weight" jdbcType="BIGINT" property="weight" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="INTEGER" property="createUser" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="modify_user" jdbcType="INTEGER" property="modifyUser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, manager_id, position_title, age_range, education, recruit_num, sex_enable, recruit_num_female, 
+    recruit_num_male, work_address, salary_start, salary_end, schedule_code, schedule_info, 
+    work_welfare, other_welfare, post_duty, job_requirement, work_time, weight, create_time, 
+    create_user, modify_time, modify_user
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_recruitment_position
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_recruitment_position
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.website.recruitment.bean.RecruitmentPosition">
+    insert into t_recruitment_position (id, manager_id, position_title, 
+      age_range, education, recruit_num, 
+      sex_enable, recruit_num_female, recruit_num_male, 
+      work_address, salary_start, salary_end, 
+      schedule_code, schedule_info, work_welfare, 
+      other_welfare, post_duty, job_requirement, 
+      work_time, weight, create_time, 
+      create_user, modify_time, modify_user
+      )
+    values (#{id,jdbcType=INTEGER}, #{managerId,jdbcType=INTEGER}, #{positionTitle,jdbcType=VARCHAR}, 
+      #{ageRange,jdbcType=VARCHAR}, #{education,jdbcType=INTEGER}, #{recruitNum,jdbcType=INTEGER}, 
+      #{sexEnable,jdbcType=INTEGER}, #{recruitNumFemale,jdbcType=INTEGER}, #{recruitNumMale,jdbcType=INTEGER}, 
+      #{workAddress,jdbcType=VARCHAR}, #{salaryStart,jdbcType=INTEGER}, #{salaryEnd,jdbcType=INTEGER}, 
+      #{scheduleCode,jdbcType=INTEGER}, #{scheduleInfo,jdbcType=VARCHAR}, #{workWelfare,jdbcType=INTEGER}, 
+      #{otherWelfare,jdbcType=VARCHAR}, #{postDuty,jdbcType=VARCHAR}, #{jobRequirement,jdbcType=VARCHAR}, 
+      #{workTime,jdbcType=VARCHAR}, #{weight,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP}, #{modifyUser,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.website.recruitment.bean.RecruitmentPosition">
+    insert into t_recruitment_position
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="managerId != null">
+        manager_id,
+      </if>
+      <if test="positionTitle != null">
+        position_title,
+      </if>
+      <if test="ageRange != null">
+        age_range,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="recruitNum != null">
+        recruit_num,
+      </if>
+      <if test="sexEnable != null">
+        sex_enable,
+      </if>
+      <if test="recruitNumFemale != null">
+        recruit_num_female,
+      </if>
+      <if test="recruitNumMale != null">
+        recruit_num_male,
+      </if>
+      <if test="workAddress != null">
+        work_address,
+      </if>
+      <if test="salaryStart != null">
+        salary_start,
+      </if>
+      <if test="salaryEnd != null">
+        salary_end,
+      </if>
+      <if test="scheduleCode != null">
+        schedule_code,
+      </if>
+      <if test="scheduleInfo != null">
+        schedule_info,
+      </if>
+      <if test="workWelfare != null">
+        work_welfare,
+      </if>
+      <if test="otherWelfare != null">
+        other_welfare,
+      </if>
+      <if test="postDuty != null">
+        post_duty,
+      </if>
+      <if test="jobRequirement != null">
+        job_requirement,
+      </if>
+      <if test="workTime != null">
+        work_time,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="modifyUser != null">
+        modify_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="managerId != null">
+        #{managerId,jdbcType=INTEGER},
+      </if>
+      <if test="positionTitle != null">
+        #{positionTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="ageRange != null">
+        #{ageRange,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=INTEGER},
+      </if>
+      <if test="recruitNum != null">
+        #{recruitNum,jdbcType=INTEGER},
+      </if>
+      <if test="sexEnable != null">
+        #{sexEnable,jdbcType=INTEGER},
+      </if>
+      <if test="recruitNumFemale != null">
+        #{recruitNumFemale,jdbcType=INTEGER},
+      </if>
+      <if test="recruitNumMale != null">
+        #{recruitNumMale,jdbcType=INTEGER},
+      </if>
+      <if test="workAddress != null">
+        #{workAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="salaryStart != null">
+        #{salaryStart,jdbcType=INTEGER},
+      </if>
+      <if test="salaryEnd != null">
+        #{salaryEnd,jdbcType=INTEGER},
+      </if>
+      <if test="scheduleCode != null">
+        #{scheduleCode,jdbcType=INTEGER},
+      </if>
+      <if test="scheduleInfo != null">
+        #{scheduleInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="workWelfare != null">
+        #{workWelfare,jdbcType=INTEGER},
+      </if>
+      <if test="otherWelfare != null">
+        #{otherWelfare,jdbcType=VARCHAR},
+      </if>
+      <if test="postDuty != null">
+        #{postDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="jobRequirement != null">
+        #{jobRequirement,jdbcType=VARCHAR},
+      </if>
+      <if test="workTime != null">
+        #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUser != null">
+        #{modifyUser,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.website.recruitment.bean.RecruitmentPosition">
+    update t_recruitment_position
+    <set>
+      <if test="managerId != null">
+        manager_id = #{managerId,jdbcType=INTEGER},
+      </if>
+      <if test="positionTitle != null">
+        position_title = #{positionTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="ageRange != null">
+        age_range = #{ageRange,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=INTEGER},
+      </if>
+      <if test="recruitNum != null">
+        recruit_num = #{recruitNum,jdbcType=INTEGER},
+      </if>
+      <if test="sexEnable != null">
+        sex_enable = #{sexEnable,jdbcType=INTEGER},
+      </if>
+      <if test="recruitNumFemale != null">
+        recruit_num_female = #{recruitNumFemale,jdbcType=INTEGER},
+      </if>
+      <if test="recruitNumMale != null">
+        recruit_num_male = #{recruitNumMale,jdbcType=INTEGER},
+      </if>
+      <if test="workAddress != null">
+        work_address = #{workAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="salaryStart != null">
+        salary_start = #{salaryStart,jdbcType=INTEGER},
+      </if>
+      <if test="salaryEnd != null">
+        salary_end = #{salaryEnd,jdbcType=INTEGER},
+      </if>
+      <if test="scheduleCode != null">
+        schedule_code = #{scheduleCode,jdbcType=INTEGER},
+      </if>
+      <if test="scheduleInfo != null">
+        schedule_info = #{scheduleInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="workWelfare != null">
+        work_welfare = #{workWelfare,jdbcType=INTEGER},
+      </if>
+      <if test="otherWelfare != null">
+        other_welfare = #{otherWelfare,jdbcType=VARCHAR},
+      </if>
+      <if test="postDuty != null">
+        post_duty = #{postDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="jobRequirement != null">
+        job_requirement = #{jobRequirement,jdbcType=VARCHAR},
+      </if>
+      <if test="workTime != null">
+        work_time = #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUser != null">
+        modify_user = #{modifyUser,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.website.recruitment.bean.RecruitmentPosition">
+    update t_recruitment_position
+    set manager_id = #{managerId,jdbcType=INTEGER},
+      position_title = #{positionTitle,jdbcType=VARCHAR},
+      age_range = #{ageRange,jdbcType=VARCHAR},
+      education = #{education,jdbcType=INTEGER},
+      recruit_num = #{recruitNum,jdbcType=INTEGER},
+      sex_enable = #{sexEnable,jdbcType=INTEGER},
+      recruit_num_female = #{recruitNumFemale,jdbcType=INTEGER},
+      recruit_num_male = #{recruitNumMale,jdbcType=INTEGER},
+      work_address = #{workAddress,jdbcType=VARCHAR},
+      salary_start = #{salaryStart,jdbcType=INTEGER},
+      salary_end = #{salaryEnd,jdbcType=INTEGER},
+      schedule_code = #{scheduleCode,jdbcType=INTEGER},
+      schedule_info = #{scheduleInfo,jdbcType=VARCHAR},
+      work_welfare = #{workWelfare,jdbcType=INTEGER},
+      other_welfare = #{otherWelfare,jdbcType=VARCHAR},
+      post_duty = #{postDuty,jdbcType=VARCHAR},
+      job_requirement = #{jobRequirement,jdbcType=VARCHAR},
+      work_time = #{workTime,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      modify_user = #{modifyUser,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
